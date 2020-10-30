@@ -8,10 +8,12 @@ module.exports = function (app) {
     // ***** Normal CRUD operations*****
 
     //  add food item
-    app.post("/foodItem", authMiddleware, foodItemController.addFoodItem);
+    // authMiddleware,
+    app.post("/foodItem", foodItemController.addFoodItem);
 
     //  delete food item by id
-    app.delete("/foodItem/:id", authMiddleware, foodItemController.deleteFoodItemById);
+    // authMiddleware,
+    app.delete("/foodItem/:id", foodItemController.deleteFoodItemById);
 
     // get food item by id
     app.get("/foodItem/:id", foodItemController.getFoodItemById);

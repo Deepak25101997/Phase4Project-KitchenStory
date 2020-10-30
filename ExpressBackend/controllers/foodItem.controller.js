@@ -5,12 +5,11 @@ exports.addFoodItem = (req, res, next) => {
 
     const name = req.body.name;
     const category = req.body.category;
-    const subCategory = req.body.subCategory;
     const brand = req.body.brand;
     const price = req.body.price;
     const containerType = req.body.containerType;
 
-    if (!name || !category || !subCategory || !brand || !containerType || price < 0) {
+    if (!name || !category || !brand || !containerType || price < 0) {
         res.status(400).json({
             message: "Please fill all the fields and check that price is not negative !"
         })
@@ -19,7 +18,6 @@ exports.addFoodItem = (req, res, next) => {
     const newFoodItem = new FoodItem({
         name: name,
         category: category,
-        subCategory: subCategory,
         brand: brand,
         price: price,
         containerType: containerType
@@ -92,14 +90,13 @@ exports.updateFoodItemById = (req, res, next) => {
     const id = req.params.id;
     const name = req.body.name;
     const category = req.body.category;
-    const subCategory = req.body.subCategory;
     const brand = req.body.brand;
     const price = req.body.price;
     const containerType = req.body.containerType;
 
 
 
-    if (!name || !category || !subCategory || !brand || !containerType || price < 0) {
+    if (!name || !category || !brand || !containerType || price < 0) {
         res.status(400).json({
             message: "Please fill all the fields and check that price is not negative !"
         })
@@ -116,7 +113,6 @@ exports.updateFoodItemById = (req, res, next) => {
             return FoodItem.findByIdAndUpdate(id, {
                 name: name,
                 category: category,
-                subCategory: subCategory,
                 brand: brand,
                 price: price,
                 containerType: containerType
@@ -165,13 +161,11 @@ exports.getAllFoodItems = (req, res, next) => {
 exports.getFoodItemsByFilter = (req, res, next) => {
 
     const category = req.body.category;
-    const subCategory = req.body.subCategory;
     const maxPrice = req.body.maxPrice;
     const containerType = req.body.containerType;
 
     FoodItem.find({
         category: category,
-        subCategory: subCategory,
         price: { $lt: maxPrice },
         containerType: containerType
     })
