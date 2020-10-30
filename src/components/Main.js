@@ -6,6 +6,9 @@ import { getToken, removeUserSession } from '../Utils/Common';
 import Home from './Home';
 import SignUp from './SignUp';
 import Login from './Login';
+import ChangePassword from './ChangePassword';
+import FoodItemAdd from './FoodItemAdd';
+import BrowseAllItems from './BrowseAllItems';
 
 
 class Main extends Component {
@@ -27,7 +30,7 @@ class Main extends Component {
                 <Router>
                     <div className="container">
                         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                            <Link to={'/'} className="navbar-brand">FindMyEvents</Link>
+                            <Link to={'/'} className="navbar-brand">KitchenStory.com</Link>
 
                             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                                 <span className="navbar-toggler-icon"></span>
@@ -43,7 +46,7 @@ class Main extends Component {
                                 </ul>
                                 <ul className="navbar-nav ml-auto">
                                     {getToken() === null ? <li className="nav-item .ml-auto">
-                                        <Link to={'/changePass'} onClick={this.handleLogin} className="nav-link" style={{ color: "white" }}>Change Password</Link>
+                                        <Link to={'/changePass'} className="nav-link" style={{ color: "white" }}>Change Password</Link>
                                     </li> : ""}
                                     {getToken() === null ? <li className="nav-item">
                                         <Link to={'/signUp'} onClick={this.handleLogin} className="nav-link" style={{ color: "white" }}>Sign Up</Link>
@@ -62,8 +65,9 @@ class Main extends Component {
                         <Route exact path="/" component={Home} />
                         <Route exact path="/signUp" component={SignUp} />
                         <Route exact path="/login" component={Login} />
-                        {/* <PrivateRoute exact path="/itemAdd" component={ItemAdd} /> */}
-                        {/* <PrivateRoute exact path="/changePass" component={ChangePass} /> */}
+                        <Route exact path="/items" component={BrowseAllItems} />
+                        <PrivateRoute exact path="/itemAdd" component={FoodItemAdd} />
+                        <PrivateRoute exact path="/changePass" component={ChangePassword} />
                     </Switch>
                 </Router>
             </div>

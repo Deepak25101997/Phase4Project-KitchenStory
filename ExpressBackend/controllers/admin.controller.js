@@ -132,7 +132,6 @@ exports.changePassword = (req, res, next) => {
                                     message: "Admin not found !"
                                 })
                             }
-
                             res.status(200).json({
                                 message: "Password changed successfully !!",
                                 admin: admin

@@ -26,24 +26,17 @@ class ChangePassword extends Component {
         });
 
         const reqObject = {
-            sentOldPass = this.state.sentOldPass,
-            newPass = this.state.newPass
-        }
+            sentOldPass: this.state.sentOldPass,
+            newPass: this.state.newPass
+        };
 
 
-        Axios.post("http://localhost:3001/auth/admin/login", reqObject)
+        Axios.post("http://localhost:3001/admin/changepassword/" + getUser().id, reqObject)
             .then(res => {
-                this.setState({
-                    loading: false
-                });
-
-                setUserSession(res.data.token, res.data.admin);
-                this.props.history.push("/");
+                this.props.history.push("/login");
             })
             .catch(error => {
-                this.setState({
-                    loading: false
-                });
+                console.log(error);
                 if (error.response.status === 400 || error.response.status === 500) {
                     this.setState({
                         submitError: error.response.data.message
@@ -85,7 +78,7 @@ class ChangePassword extends Component {
         return (
             <div className="container" style={{ width: "60%" }}>
 
-                {!getUser() ?
+                {getUser() ?
                     <form onSubmit={this.handleChangePass}>
                         <div className="form-group">
                             <label htmlFor="sentOldPass">Old Password</label>
