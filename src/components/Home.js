@@ -75,10 +75,10 @@ class Home extends Component {
         return (
             <div className="container">
                 <h1 className="title" style={{ color: "purple", marginTop: "0.5%", fontSize: 30 }}>Welcome {getUser() !== null ? getUser().name : ""} to KitchenStory.com </h1><br />
-                <p className="title" style={{ color: "brown" }}><span style={{ fontWeight: "bold" }}>First time user ? </span>
-                SignUp quickly and start using this app for buying food items.</p>
-                <p className="title" style={{ color: "brown" }}><span style={{ fontWeight: "bold" }}>Want to see the items directly ?</span> Simply browse through all the
-                items by going through the navigation bar link. Buy what you want !!</p>
+                <p className="title" style={{ color: "brown" }}><span style={{ fontWeight: "bold" }}>Buying food items made smooth. </span>Use the app to burn your hunger !!</p>
+                <p className="title" style={{ color: "brown" }}><span style={{ fontWeight: "bold" }}> Buy what you want. </span>
+                Browse through all the
+                items by going through the navigation bar link. </p>
 
 
                 <div className="container">

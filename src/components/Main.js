@@ -61,9 +61,9 @@ class Main extends Component {
                                     <li className="nav-item .ml-auto">
                                         <Link to={'/changePass'} className="nav-link" style={{ color: "white" }}>Change Password</Link>
                                     </li>
-                                    {getToken() == null ? "" : <li className="nav-item">
+                                    <li className="nav-item">
                                         <Link to={'/signUp'} onClick={this.handleLogin} className="nav-link" style={{ color: "white" }}>Sign Up</Link>
-                                    </li>}
+                                    </li>
                                     {getToken() != null ? "" : <li className="nav-item .ml-auto">
                                         <Link to={'/login'} onClick={this.handleLogin} className="nav-link" style={{ color: "white" }}>Login</Link>
                                     </li>}
