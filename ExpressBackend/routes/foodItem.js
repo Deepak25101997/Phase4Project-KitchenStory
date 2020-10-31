@@ -25,6 +25,6 @@ module.exports = function (app) {
     app.get("/foodItems", foodItemController.getAllFoodItems);
 
     // ****** Advance searches *****
-    app.get("/foodItems/filter", foodItemController.getFoodItemsByFilter);
+    app.post("/foodItems/filter", foodItemController.getFoodItemsByFilter);
 
 }

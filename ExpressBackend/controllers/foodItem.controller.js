@@ -170,7 +170,7 @@ exports.getFoodItemsByFilter = (req, res, next) => {
         containerType: containerType
     })
         .then(foodItems => {
-            if (!foodItems || foodItems.length <= 0) {
+            if (foodItems.length <= 0) {
                 res.status(404).json({
                     message: "Food items not found !"
                 })

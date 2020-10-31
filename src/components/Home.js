@@ -24,6 +24,10 @@ class Home extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
 
+        this.setState({
+            items: []
+        });
+
         const reqObject = {
             category: this.state.category,
             maxPrice: this.state.maxPrice,
@@ -38,8 +42,13 @@ class Home extends Component {
             });
         }
         else {
-            Axios.get("http://localhost:3001/foodItems/filter", reqObject)
+            Axios.post("http://localhost:3001/foodItems/filter", reqObject, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
                 .then(res => {
+                    console.log(res);
                     if (res.data.length > 0) {
                         this.setState({ items: res.data, submitError: "" });
                     } else {
@@ -49,21 +58,11 @@ class Home extends Component {
                     }
                 })
                 .catch(error => {
-                    console.log(error);
-                    if (error.response.status === 400 || error.response.status === 500) {
-                        this.setState({
-                            submitError: error.response.data.message
-                        });
-                    }
-                    else {
-                        this.setState({
-                            submitError: "Something went wrong. Please try again later."
-                        });
-                    }
+                    this.setState({
+                        submitError: error.response.data.message
+                    });
                 })
-
         }
-
     }
 
     handleChange = (event) => {
@@ -106,7 +105,7 @@ class Home extends Component {
                             <div className="form-group">
                                 <label htmlFor="maxPrice">Max Price</label>
                                 <input type="number" name="maxPrice"
-                                    className={`form-control`}
+                                    className="form-control"
                                     id="maxPrice" onChange={this.handleChange} />
                             </div>
                             <div className="form-group">
@@ -126,7 +125,7 @@ class Home extends Component {
                         {
                             this.state.items.length > 0 ?
                                 <div className="container" style={{ marginTop: 20 }}>
-                                    <div class="alert alert-success" role="alert">Yayy !! Found the results.</div>
+                                    <div className="alert alert-success" role="alert">Bravo !! Found some items.</div>
                                     <FilteredItems items={this.state.items} />
                                 </div> : ""
                         }</div>

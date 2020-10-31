@@ -70,7 +70,7 @@ class EventAdd extends Component {
                 formErrors.name = value.length < 8 ? "Minimum 8 characters are required" : "";
                 break;
             case "brand":
-                formErrors.brand = value.length < 5 ? "Minimum 5 characters are required" : "";
+                formErrors.brand = value.length < 2 ? "Minimum 2 characters are required" : "";
                 break;
             case "price":
                 formErrors.price = value.length < 0 ? "Price cannot be negative !" : "";

@@ -13,15 +13,24 @@ import BrowseAllItems from './BrowseAllItems';
 
 class Main extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            loggedIn: false
+        }
+    }
+
+
     handleLogout = (event) => {
         event.preventDefault();
         removeUserSession();
-        this.forceUpdate();
+        this.setState({ loggedIn: false });
     }
 
 
     handleLogin = (event) => {
-        this.forceUpdate();
+        this.setState({ loggedIn: true });
     }
 
     render() {
@@ -44,19 +53,33 @@ class Main extends Component {
                                         <Link to={'/itemAdd'} className="nav-link" style={{ color: "white" }}>Add Food Item</Link>
                                     </li>
                                 </ul>
-                                <ul className="navbar-nav ml-auto">
-                                    {getToken() === null ? <li className="nav-item .ml-auto">
+                                {/* <ul className="navbar-nav ml-auto">
+                                    {this.state.loggedIn && getToken() != null ? <li className="nav-item .ml-auto">
                                         <Link to={'/changePass'} className="nav-link" style={{ color: "white" }}>Change Password</Link>
                                     </li> : ""}
-                                    {getToken() === null ? <li className="nav-item">
+                                    {this.state.loggedIn && getToken() == null ? "" : <li className="nav-item">
                                         <Link to={'/signUp'} onClick={this.handleLogin} className="nav-link" style={{ color: "white" }}>Sign Up</Link>
-                                    </li> : ""}
-                                    {getToken() === null ? <li className="nav-item .ml-auto">
+                                    </li>}
+                                    {this.state.loggedIn && getToken() == null ? "" : <li className="nav-item .ml-auto">
                                         <Link to={'/login'} onClick={this.handleLogin} className="nav-link" style={{ color: "white" }}>Login</Link>
-                                    </li> : ""}
-                                    {getToken() !== null ? <li className="nav-item .ml-auto">
+                                    </li>}
+                                    {this.state.loggedIn && getToken() != null ? <li className="nav-item .ml-auto">
                                         <button onClick={this.handleLogout} className="btn btn-danger" style={{ color: "white" }}>Logout</button>
                                     </li> : ""}
+                                </ul> */}
+                                <ul className="navbar-nav ml-auto">
+                                    <li className="nav-item .ml-auto">
+                                        <Link to={'/changePass'} className="nav-link" style={{ color: "white" }}>Change Password</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link to={'/signUp'} onClick={this.handleLogin} className="nav-link" style={{ color: "white" }}>Sign Up</Link>
+                                    </li>
+                                    <li className="nav-item .ml-auto">
+                                        <Link to={'/login'} onClick={this.handleLogin} className="nav-link" style={{ color: "white" }}>Login</Link>
+                                    </li>
+                                    <li className="nav-item .ml-auto">
+                                        <button onClick={this.handleLogout} className="btn btn-danger" style={{ color: "white" }}>Logout</button>
+                                    </li>
                                 </ul>
                             </div>
                         </nav> <br />

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { getUser } from '../Utils/Common';
+import { getToken, getUser } from '../Utils/Common';
 import Axios from 'axios';
 
 class BrowseAllItems extends Component {
@@ -65,7 +65,7 @@ class BrowseAllItems extends Component {
                                         <p className="card-title">Brand: {eventValue.brand}</p>
                                         <p className="card-title">Price: {eventValue.price}</p>
                                         <Link to={'/eventDetail/' + eventValue._id} className="btn btn-primary btn-sm">Details</Link>
-                                        <button onClick={this.deleteNote.bind(this, eventValue._id)} style={{ margin: 2 }} className="btn btn-danger btn-sm">Delete</button>
+                                        {getToken() !== null ? <button onClick={this.deleteNote.bind(this, eventValue._id)} style={{ margin: 2 }} className="btn btn-danger btn-sm">Delete</button> : ""}
                                     </div>
                                 </div>
                             </div>
