@@ -33,14 +33,6 @@ class ItemDetail extends Component {
     }
 
 
-    calculate = () => {
-        const name = this.state.item.name;
-        const category = this.state.item.category;
-        const qty = this.state.item.qty;
-        const price = this.state.item.price * qty;
-
-    }
-
     render() {
         return (
             <div className="container">

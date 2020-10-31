@@ -12,6 +12,8 @@ import BrowseAllItems from './BrowseAllItems';
 import ItemDetail from './ItemDetail';
 import FoodItemEdit from './FoodItemEdit';
 import Cart from './Cart';
+import PaymentSuccess from './PaymentSucess';
+
 
 class Main extends Component {
 
@@ -55,33 +57,19 @@ class Main extends Component {
                                         <Link to={'/itemAdd'} className="nav-link" style={{ color: "white" }}>Add Food Item</Link>
                                     </li>
                                 </ul>
-                                {/* <ul className="navbar-nav ml-auto">
-                                    {this.state.loggedIn && getToken() != null ? <li className="nav-item .ml-auto">
-                                        <Link to={'/changePass'} className="nav-link" style={{ color: "white" }}>Change Password</Link>
-                                    </li> : ""}
-                                    {this.state.loggedIn && getToken() == null ? "" : <li className="nav-item">
-                                        <Link to={'/signUp'} onClick={this.handleLogin} className="nav-link" style={{ color: "white" }}>Sign Up</Link>
-                                    </li>}
-                                    {this.state.loggedIn && getToken() == null ? "" : <li className="nav-item .ml-auto">
-                                        <Link to={'/login'} onClick={this.handleLogin} className="nav-link" style={{ color: "white" }}>Login</Link>
-                                    </li>}
-                                    {this.state.loggedIn && getToken() != null ? <li className="nav-item .ml-auto">
-                                        <button onClick={this.handleLogout} className="btn btn-danger" style={{ color: "white" }}>Logout</button>
-                                    </li> : ""}
-                                </ul> */}
                                 <ul className="navbar-nav ml-auto">
                                     <li className="nav-item .ml-auto">
                                         <Link to={'/changePass'} className="nav-link" style={{ color: "white" }}>Change Password</Link>
                                     </li>
-                                    <li className="nav-item">
+                                    {getToken() == null ? "" : <li className="nav-item">
                                         <Link to={'/signUp'} onClick={this.handleLogin} className="nav-link" style={{ color: "white" }}>Sign Up</Link>
-                                    </li>
-                                    <li className="nav-item .ml-auto">
+                                    </li>}
+                                    {getToken() != null ? "" : <li className="nav-item .ml-auto">
                                         <Link to={'/login'} onClick={this.handleLogin} className="nav-link" style={{ color: "white" }}>Login</Link>
-                                    </li>
-                                    <li className="nav-item .ml-auto">
+                                    </li>}
+                                    {getToken() != null ? <li className="nav-item .ml-auto">
                                         <button onClick={this.handleLogout} className="btn btn-danger" style={{ color: "white" }}>Logout</button>
-                                    </li>
+                                    </li> : ""}
                                 </ul>
                             </div>
                         </nav> <br />
@@ -93,6 +81,7 @@ class Main extends Component {
                         <Route exact path="/login" component={Login} />
                         <Route exact path="/items" component={BrowseAllItems} />
                         <Route exact path="/itemDetail/:id" component={ItemDetail} />
+                        <Route exact path="/payment" component={PaymentSuccess} />
                         <Route exact path="/cart/:name/:cat/:qty/:price" component={Cart} />
                         <PrivateRoute exact path="/itemAdd" component={FoodItemAdd} />
                         <PrivateRoute exact path="/itemEdit/:id" component={FoodItemEdit} />

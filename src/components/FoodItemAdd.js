@@ -41,9 +41,9 @@ class FoodItemAdd extends Component {
 
 
         Axios.post("http://localhost:3001/foodItem", reqObject, {
-            // headers: {
-            //     "x-auth-token": getToken()
-            // }
+            headers: {
+                "x-auth-token": getToken()
+            }
         })
             .then(res => {
                 this.props.history.push("/items")

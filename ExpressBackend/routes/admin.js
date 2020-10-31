@@ -9,7 +9,6 @@ module.exports = function (app) {
 
     app.get("/admins", adminController.getAllAdmins);
 
-    // authMiddleware,
-    app.put("/admin/changepassword/:id", adminController.changePassword);
+    app.put("/admin/changepassword/:id", authMiddleware, adminController.changePassword);
 
 }

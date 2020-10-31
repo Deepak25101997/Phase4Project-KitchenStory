@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { removeUserSession, setUserSession, getUser } from '../Utils/Common';
+import { removeUserSession, getUser, getToken } from '../Utils/Common';
 import Axios from 'axios';
 
 class ChangePassword extends Component {
@@ -27,7 +27,11 @@ class ChangePassword extends Component {
         };
 
 
-        Axios.put("http://localhost:3001/admin/changepassword/" + getUser().id, reqObject)
+        Axios.put("http://localhost:3001/admin/changepassword/" + getUser().id, reqObject, {
+            headers: {
+                "x-auth-token": getToken()
+            }
+        })
             .then(res => {
                 console.log("Changed !!!!!");
                 removeUserSession();

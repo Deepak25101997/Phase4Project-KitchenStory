@@ -41,9 +41,9 @@ class FoodItemEdit extends Component {
 
 
         Axios.put("http://localhost:3001/foodItem/" + this.props.match.params.id, reqObject, {
-            // headers: {
-            //     "x-auth-token": getToken()
-            // }
+            headers: {
+                "x-auth-token": getToken()
+            }
         })
             .then(res => {
                 const data = res.data;

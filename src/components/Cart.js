@@ -10,7 +10,8 @@ class Cart extends Component {
         super(props);
 
         this.state = {
-            items: []
+            items: [],
+            sum: 0
         }
     }
 
@@ -36,17 +37,17 @@ class Cart extends Component {
 
     render() {
         return (
-            <div className="container">
-                <div className="container">
-                    <Link to={"/payment"} className="btn btn-primary btn-sm">Make Payment</Link>
+            <div className="container" style={{ textAlign: "center" }}>
+                <div className="container" style={{ margin: "10px" }}>
+                    <Link to={"/payment"} className="btn btn-success btn-lg">Make Payment</Link>
                 </div>
                 <div className="container">
-                    <button onClick={this.update} className="btn btn-primary btn-sm">Render</button>
+                    <button onClick={this.update} className="btn btn-primary btn-sm">See Cart Items</button>
                 </div>
-                <div className="container">
-                </div>
+
                 <div className="row">
                     {this.state.items.map((eventValue, index) => {
+
                         return (
                             <div key={index} className="col-sm-3 mt-3">
                                 <div key={index} className="card rounded border border-success">
@@ -61,7 +62,7 @@ class Cart extends Component {
                         )
                     })}
                 </div>
-            </div >
+            </div>
         )
     }
 

@@ -29,9 +29,9 @@ class BrowseAllItems extends Component {
 
     deleteNote(id) {
         Axios.delete('http://localhost:3001/foodItem/' + id, {
-            // headers: {
-            //     "x-auth-token": getToken()
-            // }
+            headers: {
+                "x-auth-token": getToken()
+            }
         })
             .then((result) => {
                 alert("Item deleted successfully !");
