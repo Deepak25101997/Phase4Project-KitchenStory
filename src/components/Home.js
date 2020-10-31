@@ -78,7 +78,7 @@ class Home extends Component {
                 <p className="title" style={{ color: "brown" }}><span style={{ fontWeight: "bold" }}>First time user ? </span>
                 SignUp quickly and start using this app for buying food items.</p>
                 <p className="title" style={{ color: "brown" }}><span style={{ fontWeight: "bold" }}>Want to see the items directly ?</span> Simply browse through all the
-                items by going through the navigation bar link.</p>
+                items by going through the navigation bar link. Buy what you want !!</p>
 
 
                 <div className="container">
