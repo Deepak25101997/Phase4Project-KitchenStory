@@ -10,6 +10,6 @@ module.exports = function (app) {
     app.get("/admins", adminController.getAllAdmins);
 
     // authMiddleware,
-    app.post("/admin/changepassword/:id", adminController.changePassword);
+    app.put("/admin/changepassword/:id", adminController.changePassword);
 
 }

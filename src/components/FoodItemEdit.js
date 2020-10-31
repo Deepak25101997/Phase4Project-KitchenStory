@@ -47,7 +47,7 @@ class FoodItemEdit extends Component {
         })
             .then(res => {
                 const data = res.data;
-
+                console.log(data);
                 this.setState({
                     name: data.name,
                     category: data.category,

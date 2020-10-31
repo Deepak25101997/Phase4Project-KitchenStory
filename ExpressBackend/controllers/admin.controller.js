@@ -100,14 +100,21 @@ exports.changePassword = (req, res, next) => {
                 })
             }
 
-            const savedPass = admin.password;
 
-            if (savedPass != sentOldPass) {
-                res.status(400).json({
-                    message: "Old password is incorrect !"
+            // console.log(savedPass);
+            // console.log(sentOldPass);
+
+            bcrypt.compare(sentOldPass, admin.password)
+                .then(isMatch => {
+                    if (!isMatch) {
+                        res.status(400).json({
+                            message: "Old password is incorrect !!"
+                        })
+                    }
                 })
-            }
-
+                .catch(err => res.status(500).json({
+                    message: "Unable to change password due to error : " + err
+                }))
 
             const name = admin.name;
             const email = admin.email;
@@ -133,8 +140,7 @@ exports.changePassword = (req, res, next) => {
                                 })
                             }
                             res.status(200).json({
-                                message: "Password changed successfully !!",
-                                admin: admin
+                                message: "Password changed successfully !!"
                             });
                         })
                         .catch(err => res.status(500).json({

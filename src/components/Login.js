@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { setUserSession, getUser } from '../Utils/Common';
+import { removeUserSession, setUserSession, getUser } from '../Utils/Common';
 import Axios from 'axios';
 
 
@@ -86,6 +86,7 @@ class Login extends Component {
 
         this.setState({ formErrors, [name]: value }, () => { console.log(this.state) });
     }
+
 
     render() {
 

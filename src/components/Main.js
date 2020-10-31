@@ -89,6 +89,7 @@ class Main extends Component {
                     <Switch>
                         <Route exact path="/" component={Home} />
                         <Route exact path="/signUp" component={SignUp} />
+                        <Route exact path="/logout" change={true} component={Login} />
                         <Route exact path="/login" component={Login} />
                         <Route exact path="/items" component={BrowseAllItems} />
                         <Route exact path="/itemDetail/:id" component={ItemDetail} />

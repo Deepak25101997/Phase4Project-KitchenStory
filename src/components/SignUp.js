@@ -102,7 +102,7 @@ class SignUp extends Component {
 
         return (
             <div className="container" style={{ width: "60%" }}>
-                {!getUser() ? <form onSubmit={this.handleSignUp}>
+                {getUser() ? <div className="alert alert-success" role="alert">You are already signed up !</div> : <form onSubmit={this.handleSignUp}>
                     <div className="form-group">
                         <label htmlFor="name">Name</label>
                         <input type="text" className={`form-control ${formErrors.name.length > 0 ? "is-invalid" : null}`}
@@ -141,7 +141,7 @@ class SignUp extends Component {
                     </div>
                     {this.state.submitError && <><div className="alert alert-danger" role="alert">{this.state.submitError}</div><br /></>}<br />
                     <button type="submit" className="btn btn-primary">Submit</button>
-                </form> : ""}
+                </form>}
             </div>
         )
     }
