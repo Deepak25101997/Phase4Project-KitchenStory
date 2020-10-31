@@ -10,6 +10,7 @@ import ChangePassword from './ChangePassword';
 import FoodItemAdd from './FoodItemAdd';
 import BrowseAllItems from './BrowseAllItems';
 import ItemDetail from './ItemDetail';
+import FoodItemEdit from './FoodItemEdit';
 
 
 class Main extends Component {
@@ -92,6 +93,7 @@ class Main extends Component {
                         <Route exact path="/items" component={BrowseAllItems} />
                         <Route exact path="/itemDetail/:id" component={ItemDetail} />
                         <PrivateRoute exact path="/itemAdd" component={FoodItemAdd} />
+                        <PrivateRoute exact path="/itemEdit/:id" component={FoodItemEdit} />
                         <PrivateRoute exact path="/changePass" component={ChangePassword} />
                     </Switch>
                 </Router>

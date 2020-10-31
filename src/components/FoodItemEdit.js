@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { getUser, getToken } from '../Utils/Common';
 import Axios from 'axios';
 
-class FoodItemAdd extends Component {
+class FoodItemEdit extends Component {
 
     constructor(props) {
         super(props);
@@ -40,27 +40,47 @@ class FoodItemAdd extends Component {
         }
 
 
-        Axios.post("http://localhost:3001/foodItem", reqObject, {
+        Axios.put("http://localhost:3001/foodItem/" + this.props.match.params.id, reqObject, {
             // headers: {
             //     "x-auth-token": getToken()
             // }
         })
             .then(res => {
+                const data = res.data;
+
+                this.setState({
+                    name: data.name,
+                    category: data.category,
+                    brand: data.brand,
+                    description: data.description,
+                    price: data.price,
+                    containerType: data.containerType
+                })
+
                 this.props.history.push("/items")
             })
             .catch(error => {
-                if (error.response.status === 400 || error.response.status === 500) {
-                    this.setState({
-                        submitError: error.response.data.message
-                    });
-                }
-                else {
-                    this.setState({
-                        submitError: "Something went wrong. Please try again later."
-                    });
-                }
+                this.setState({
+                    submitError: error.response.data.message
+                });
             })
+    }
 
+    componentDidMount = () => {
+        Axios.get('http://localhost:3001/foodItem/' + this.props.match.params.id)
+            .then(res => {
+                const data = res.data;
+
+                this.setState({
+                    name: data.name,
+                    category: data.category,
+                    brand: data.brand,
+                    description: data.description,
+                    price: data.price,
+                    containerType: data.containerType
+                })
+            })
+            .catch(err => console.log("There is some error : " + err));
     }
 
     handleChange = (event) => {
@@ -100,12 +120,15 @@ class FoodItemAdd extends Component {
                         <label htmlFor="name">Name</label>
                         <input type="text" name="name"
                             className={`form-control ${formErrors.name.length > 0 ? "is-invalid" : null}`} id="name"
-                            onChange={this.handleChange} />
+                            onChange={this.handleChange}
+                            value={this.state.name || ''} />
                         {formErrors.name.length > 0 && (<span>{formErrors.name}</span>)}
                     </div>
                     <div className="form-group">
                         <label htmlFor="category">Category</label>
-                        <select name="category" className="form-control" onChange={this.handleChange} id="category">
+                        <select name="category" className="form-control"
+                            value={this.state.category || ''}
+                            onChange={this.handleChange} id="category">
                             <option>Coffee</option>
                             <option>Dals and Pulses</option>
                             <option>Ghee and Oils</option>
@@ -125,26 +148,34 @@ class FoodItemAdd extends Component {
                         <label htmlFor="brand">Brand</label>
                         <input type="text" name="brand" id="brand"
                             className={`form-control ${formErrors.brand.length > 0 ? "is-invalid" : null}`}
-                            onChange={this.handleChange} />
+                            onChange={this.handleChange}
+                            value={this.state.brand || ''} />
                         {formErrors.brand.length > 0 && (<span>{formErrors.brand}</span>)}
                     </div>
                     <div className="form-group">
                         <label htmlFor="description">Description</label>
                         <textarea name="description" id="description"
                             className={`form-control ${formErrors.description.length > 0 ? "is-invalid" : null}`}
-                            onChange={this.handleChange} rows="3"></textarea>
+                            onChange={this.handleChange}
+                            value={this.state.description || ''}
+                            rows="3"></textarea>
                         {formErrors.description.length > 0 && (<span>{formErrors.description}</span>)}
                     </div>
                     <div className="form-group">
                         <label htmlFor="price">Price</label>
                         <input type="number" name="price" id="price"
                             className={`form-control ${formErrors.price.length > 0 ? "is-invalid" : null}`}
-                            onChange={this.handleChange} />
+                            onChange={this.handleChange}
+                            value={this.state.price || ''} />
                         {formErrors.price.length > 0 && (<span>{formErrors.price}</span>)}
                     </div>
                     <div className="form-group">
                         <label htmlFor="containerType">Container Type</label>
-                        <select name="containerType" className="form-control" onChange={this.handleChange} id="containerType">
+                        <select name="containerType"
+                            className="form-control"
+                            onChange={this.handleChange}
+                            id="containerType"
+                            value={this.state.containerType || ''}>
                             <option>Pouch</option>
                             <option>Bottle</option>
                             <option>Can</option>
@@ -160,4 +191,4 @@ class FoodItemAdd extends Component {
 
 }
 
-export default FoodItemAdd;
+export default FoodItemEdit;

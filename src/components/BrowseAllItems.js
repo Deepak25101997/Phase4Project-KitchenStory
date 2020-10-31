@@ -66,6 +66,7 @@ class BrowseAllItems extends Component {
                                         <p className="card-title">Price: {eventValue.price}</p>
                                         <Link to={'/itemDetail/' + eventValue._id} className="btn btn-primary btn-sm">View and Buy</Link>
                                         {getToken() !== null ? <button onClick={this.deleteNote.bind(this, eventValue._id)} style={{ margin: 2 }} className="btn btn-danger btn-sm">Delete</button> : ""}
+                                        {getToken() !== null ? <Link to={'/itemEdit/' + eventValue._id} style={{ margin: 2 }} className="btn btn-info btn-sm">Edit</Link> : ""}
                                     </div>
                                 </div>
                             </div>

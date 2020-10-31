@@ -4,12 +4,13 @@ const foodItem = require('../routes/foodItem');
 exports.addFoodItem = (req, res, next) => {
 
     const name = req.body.name;
+    const description = req.body.description;
     const category = req.body.category;
     const brand = req.body.brand;
     const price = req.body.price;
     const containerType = req.body.containerType;
 
-    if (!name || !category || !brand || !containerType || price < 0) {
+    if (!name || !description || !category || !brand || !containerType || price < 0) {
         res.status(400).json({
             message: "Please fill all the fields and check that price is not negative !"
         })
@@ -17,6 +18,7 @@ exports.addFoodItem = (req, res, next) => {
 
     const newFoodItem = new FoodItem({
         name: name,
+        description: description,
         category: category,
         brand: brand,
         price: price,
@@ -89,6 +91,7 @@ exports.updateFoodItemById = (req, res, next) => {
 
     const id = req.params.id;
     const name = req.body.name;
+    const description = req.body.description;
     const category = req.body.category;
     const brand = req.body.brand;
     const price = req.body.price;
@@ -96,7 +99,7 @@ exports.updateFoodItemById = (req, res, next) => {
 
 
 
-    if (!name || !category || !brand || !containerType || price < 0) {
+    if (!name || !description || !category || !brand || !containerType || price < 0) {
         res.status(400).json({
             message: "Please fill all the fields and check that price is not negative !"
         })
@@ -112,6 +115,7 @@ exports.updateFoodItemById = (req, res, next) => {
 
             return FoodItem.findByIdAndUpdate(id, {
                 name: name,
+                description: description,
                 category: category,
                 brand: brand,
                 price: price,

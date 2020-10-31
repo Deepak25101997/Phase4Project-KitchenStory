@@ -52,6 +52,10 @@ class ItemDetail extends Component {
                                         <td>{this.state.item.brand}</td>
                                     </tr>
                                     <tr>
+                                        <th>Description</th>
+                                        <td>{this.state.item.description}</td>
+                                    </tr>
+                                    <tr>
                                         <th>Container Type</th>
                                         <td>{this.state.item.containerType}</td>
                                     </tr>

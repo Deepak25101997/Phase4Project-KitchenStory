@@ -19,9 +19,10 @@ module.exports = function (app) {
     app.get("/foodItem/:id", foodItemController.getFoodItemById);
 
     // update food item by id
-    app.put("/foodItem/:id", authMiddleware, foodItemController.updateFoodItemById);
+    // authMiddleware,
+    app.put("/foodItem/:id", foodItemController.updateFoodItemById);
 
-    //get all the events in the db
+    //get all the items in the db
     app.get("/foodItems", foodItemController.getAllFoodItems);
 
     // ****** Advance searches *****
