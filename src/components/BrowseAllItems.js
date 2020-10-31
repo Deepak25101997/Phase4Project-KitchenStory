@@ -52,7 +52,7 @@ class BrowseAllItems extends Component {
             <div className="container">
                 <h3>{this.state.items.length > 0 ? "Here You Go !!" : "OOPS, Sorry no items found."}</h3>
                 <br />
-                {getUser() !== null ? <Link to="/itemAdd" className="btn btn-info" >Add New Event</Link> : <Link to="/itemAdd" className="btn btn-secondary disabled">Login to add new event</Link>}
+                {getUser() !== null ? <Link to="/itemAdd" className="btn btn-info" >Add New Item</Link> : <Link to="/itemAdd" className="btn btn-secondary disabled">Login to add new item</Link>}
                 <br /><br />
                 <div className="row">
                     {this.state.items.map((eventValue, index) => {
@@ -64,7 +64,7 @@ class BrowseAllItems extends Component {
                                         <p className="card-text">Category: {eventValue.category}</p>
                                         <p className="card-title">Brand: {eventValue.brand}</p>
                                         <p className="card-title">Price: {eventValue.price}</p>
-                                        <Link to={'/eventDetail/' + eventValue._id} className="btn btn-primary btn-sm">Details</Link>
+                                        <Link to={'/itemDetail/' + eventValue._id} className="btn btn-primary btn-sm">View and Buy</Link>
                                         {getToken() !== null ? <button onClick={this.deleteNote.bind(this, eventValue._id)} style={{ margin: 2 }} className="btn btn-danger btn-sm">Delete</button> : ""}
                                     </div>
                                 </div>

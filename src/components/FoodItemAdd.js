@@ -43,7 +43,7 @@ class EventAdd extends Component {
             // }
         })
             .then(res => {
-                this.props.history.push("/")
+                this.props.history.push("/items")
             })
             .catch(error => {
                 if (error.response.status === 400 || error.response.status === 500) {
@@ -67,7 +67,7 @@ class EventAdd extends Component {
 
         switch (name) {
             case "name":
-                formErrors.name = value.length < 8 ? "Minimum 8 characters are required" : "";
+                formErrors.name = value.length < 3 ? "Minimum 3 characters are required" : "";
                 break;
             case "brand":
                 formErrors.brand = value.length < 2 ? "Minimum 2 characters are required" : "";

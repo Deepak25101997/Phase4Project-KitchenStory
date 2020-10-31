@@ -121,7 +121,7 @@ class Home extends Component {
                             <button type="submit" className="btn btn-primary">Search</button>
                         </form>
                     </div>
-                    <div className="container">
+                    <div className="container" style={{ marginBottom: "50px" }}>
                         {
                             this.state.items.length > 0 ?
                                 <div className="container" style={{ marginTop: 20 }}>

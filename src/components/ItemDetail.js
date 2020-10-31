@@ -57,7 +57,7 @@ class ItemDetail extends Component {
                                     </tr>
                                     <tr>
                                         <th>Price</th>
-                                        <td> this.state.event.price</td>
+                                        <td>{this.state.item.price}</td>
                                     </tr>
                                     <tr>
                                         <td>

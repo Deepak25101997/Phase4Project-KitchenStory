@@ -25,7 +25,7 @@ class FilteredItems extends Component {
                                         <h3 className="card-title text-danger title">{itemValue.name}</h3>
                                         <p className="card-text">Category: {itemValue.category}</p>
                                         <p className="card-title">Price: {itemValue.price}</p>
-                                        <Link to={'/eventDetail/' + itemValue._id} className="btn btn-primary btn-sm">Details</Link>
+                                        <Link to={'/itemDetail/' + itemValue._id} className="btn btn-primary btn-sm">Details</Link>
                                     </div>
                                 </div>
                             </div>
